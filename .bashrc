@@ -1,6 +1,5 @@
 export PATH="/usr/local/bin:/usr/local/sbin:~/bin:$PATH:/usr/local/share/npm/bin:~/bin:./node_modules/.bin"
 export NODE_PATH=/usr/local/lib/node_modules
-#export SSL_CERT_FILE=/usr/local/ssl/cacert.pem
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
@@ -33,17 +32,6 @@ alias l='ls -CF'
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-#
-# Determine which branch of GIT
-#
-function parse_git_branch {
-  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
-}
-
-function node_version {
-  node -v
-}
-
 blue="\033[0;34m"
 red="\033[0;31m"
 black="\033[0;30m"
@@ -63,13 +51,24 @@ function set_prompt {
     TITLEBAR='${white}\u@\h:\w'
     ;;
     *)
-    TITLEBAR="blah"
+    TITLEBAR='\u@\h:\w'
     ;;
   esac
 
-  PS1="\n\[$yellow\]\u@\h:\[$red\](ruby:\$(~/.rvm/bin/rvm-prompt), node:\$(node_version))\n\[$white\]\w\[$green\] \$(parse_git_branch)\[$white\]"
+  PS1="\n\[$yellow\]\u@\h:\[$red\](ruby:\$(~/.rvm/bin/rvm-prompt), node:\$(node_version))\n\[$white\]\w\[$green\] \$(parse_git_branch)\[$white\] $"
   PS2='> '
   PS4='+ '
+}
+
+#
+# Determine which branch of GIT
+#
+function parse_git_branch {
+  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
+
+function node_version {
+  node -v
 }
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
@@ -79,10 +78,6 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
   . $(brew --prefix)/etc/bash_completion
 fi
 
-# source /usr/local/git/contrib/completion/git-completion.bash
-
 set_prompt
-PS1="$PS1\$ "
 
-[[ -s /Users/benkitzelman/.nvm/nvm.sh ]] && . /Users/benkitzelman/.nvm/nvm.sh # This loads NVM
-nvm use 0.10.12 # lovely cbt version
+[[ -s /Users/benkitzelman/.nvm/nvm.sh ]] && . /Users/benkitzelman/.nvm/nvm.sh
