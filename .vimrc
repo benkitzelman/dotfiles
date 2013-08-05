@@ -1,5 +1,4 @@
 syntax on       " Turn code syntax highlighting on.
-colorscheme ir_black    " Set colorscheme.
 set virtualedit=onemore         " Allow for cursor beyond last character.
 set history=1000                " Store a ton of history (default is 20).
 " set spell                       " Spell checking on.
