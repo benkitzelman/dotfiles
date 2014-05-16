@@ -25,3 +25,19 @@ set shiftwidth=2                " use indents of 4 spaces
 set expandtab                   " tabs are spaces, not tabs
 set tabstop=2                   " an indentation every four columns
 set softtabstop=2               " let backspace delete indent
+
+" Pathogen
+execute pathogen#infect()
+call pathogen#helptags() "generate helptags for everything in ‘runtimepath’
+syntax on
+filetype plugin indent on
+
+" NERDTree Mappings
+map <C-S-.>     :NERDTree<CR>
+map <C-S-Left>  :tabp<CR>
+map <C-S-Right> :tabn<CR>
+map <C-S-n>     :tabnew<CR>
+
+let g:ctrlp_map = '<c-t>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
