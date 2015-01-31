@@ -8,6 +8,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 
 alias redis='redis-server /usr/local/etc/redis.conf > /tmp/redis.log &'
+alias aliases='cat ~/.aliases'
 
 
 # CBT Aliases

@@ -60,7 +60,7 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH="/usr/local/opt/nvm/v0.10.26/bin:/Users/benkitzelman/.rvm/gems/ruby-1.9.3-p374/bin:/Users/benkitzelman/.rvm/gems/ruby-1.9.3-p374@global/bin:/Users/benkitzelman/.rvm/rubies/ruby-1.9.3-p374/bin:/usr/local/bin:/usr/local/sbin:~/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/npm/bin:./node_modules/.bin:/Users/benkitzelman/.rvm/bin"
+export PATH="/usr/local/bin:/usr/local/sbin:~/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -91,3 +91,5 @@ nvm use 0.10.26
 # Work around bug in browserify
 ulimit -n 2560
 
+export PATH="$PATH:/usr/local/share/npm/bin:./node_modules/.bin"
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
