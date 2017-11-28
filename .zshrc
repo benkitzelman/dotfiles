@@ -5,7 +5,6 @@ export JAVA_HOME="$(/usr/libexec/java_home)"
 export AWS_IAM_HOME="/usr/local/opt/aws-iam-tools/libexec"
 export AWS_CREDENTIAL_FILE=$HOME/.aws-credentials-master
 
-
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
@@ -54,7 +53,7 @@ ZSH_THEME="beano"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git rvm nvm history-substring-search zsh-syntax-highlighting)
+plugins=(git git-prompt nvm history-substring-search rvm)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -79,17 +78,15 @@ export PATH="/usr/local/bin:/usr/local/sbin:~/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+
 source ~/.aliases
-
-function node_version {
-  node -v
-}
-
 source $(brew --prefix nvm)/nvm.sh
-nvm use 0.10.26
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+nvm use 8.6.0
 
 # Work around bug in browserify
 ulimit -n 2560
 
-export PATH="$PATH:/usr/local/share/npm/bin:./node_modules/.bin"
+export PATH="$PATH:/Users/benkitzelman/bin:/usr/local/share/npm/bin:./node_modules/.bin"
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
