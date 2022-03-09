@@ -1,20 +1,27 @@
+alias aliases='cat ~/.aliases'
+
 # some more ls aliases
-alias ll='ls -alF'
+alias ll='ls -alhF'
 alias la='ls -A'
 alias l='ls -CF'
 
 alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
-# Add an "alert" alias for long running commands.  Use like so:
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
-
 alias redis='redis-server /usr/local/etc/redis.conf > /tmp/redis.log &'
-alias aliases='cat ~/.aliases'
-
+alias findkill='~/bin/findkill'
+alias jq='~/bin/jq'
+#alias git='hub'
 
 # CBT Aliases
-alias cbt='cd ~/dev/projects/cbt'
-alias ntp='cd ~/dev/projects/node-travelport'
-alias ntplink='rm -rf ~/dev/projects/node-travelport && ln -s ~/dev/projects/node-travelport ~/dev/projects/cbt/node_modules/travelport'
-alias refreshcbt='cd ~/dev/projects/cbt  && git checkout master && git pull && npm install && grunt db:init && grunt'
-alias checkmaster='$(refreshcbt) && npm test'
+alias cbt='cd ~/dev/projects/cbt && nvm use'
+alias ntp='cd ~/dev/projects/node-uapi'
+alias ntplink='rm -rf $(pwd)/node_modules/uapi ; ln -s $(pwd)/../node-uapi $(pwd)/node_modules/uapi && ll $(pwd)/node_modules/'
+alias ntpunlink='rm $(pwd)/node_modules/uapi ; pwd && npm install && echo "NTP Installed from NPM package"'
+alias tenv='NODE_ENV=test grunt db:init && NODE_ENV=test TZ=UTC'
+alias tdebug='tenv node --inspect node_modules/mocha/bin/_mocha'
+alias t='tenv mocha --reporter list'
+
+# Ambisie Aliases
+alias amb='cd ~/dev/projects/Ambisie && nvm use'
+alias amlink='rm -rf $(pwd)/node_modules/ambisie-messenger ; ln -s $(pwd)/../ambisie-sendbird-messenger $(pwd)/node_modules/ambisie-messenger && ll $(pwd)/node_modules/ | grep ambisie-messenger'
+alias amunlink='rm $(pwd)/node_modules/ambisie-messenger ; pwd && npm install && echo "Ambisie Messenger Installed from NPM package"'
+

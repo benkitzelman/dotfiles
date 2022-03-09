@@ -63,6 +63,8 @@ source $ZSH/oh-my-zsh.sh
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
+# setup jenv
+export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"
 export JAVA_HOME="$(jenv prefix)"
 
@@ -70,9 +72,7 @@ source ~/.aliases
 
 # setup pyenv
 alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
-eval "$(pyenv init --path)"
-eval "$(pyenv init -)
-
+eval "$(pyenv init -)"
 
 # Alias Git to Hub preserving git-completions
 function git() { hub $@; }
@@ -88,7 +88,6 @@ nvm use stable
 ulimit -u unlimited
 
 export PATH="$PATH:./node_modules/.bin"
-export PATH="$HOME/.jenv/bin:$PATH"
 export PATH="$PATH:$HOME/.rvm/bin"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
